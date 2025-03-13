@@ -36,8 +36,16 @@ class SquiseeByShopServiceTest {
     var result = service.getSquisheeProfitabilityByShop();
 
     assertThat(result)
-        .containsEntry("1", new SquisheeProfitability(1f, 5f))
-        .containsEntry("2", new SquisheeProfitability(2f, 30f));
+        .hasEntrySatisfying("1", value -> {
+              assertThat(value.getProfitability()).isEqualTo(1F);
+              assertThat(value.getProfit()).isEqualTo(5F);
+            }
+        ).hasEntrySatisfying(
+            "2", value -> {
+              assertThat(value.getProfitability()).isEqualTo(2F);
+              assertThat(value.getProfit()).isEqualTo(30F);
+            }
+        );
   }
 
 }

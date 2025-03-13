@@ -35,8 +35,16 @@ class SquisheeByFlavourServiceTest {
     var result = squisheeByFlavourService.getSquisheeProfitabilityByFlavour();
 
     assertThat(result)
-        .containsEntry(FlavourEnum.STRAWBERRY, new SquisheeProfitability(1.5f, 15f))
-        .containsEntry(FlavourEnum.CHOCOLATE, new SquisheeProfitability(1f, 3f));
+        .hasEntrySatisfying(FlavourEnum.STRAWBERRY, value -> {
+              assertThat(value.getProfitability()).isEqualTo(1.5F);
+              assertThat(value.getProfit()).isEqualTo(15F);
+            }
+        ).hasEntrySatisfying(
+            FlavourEnum.CHOCOLATE, value -> {
+              assertThat(value.getProfitability()).isEqualTo(1F);
+              assertThat(value.getProfit()).isEqualTo(3F);
+            }
+        );
   }
 
 }
