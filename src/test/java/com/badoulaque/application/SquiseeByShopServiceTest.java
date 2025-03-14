@@ -1,11 +1,9 @@
 package com.badoulaque.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 import com.badoulaque.domain.FlavourEnum;
-import com.badoulaque.domain.SquisheeProfitability;
 import com.badoulaque.domain.SquisheeSale;
 import com.badoulaque.infrastructure.SquiseePort;
 import java.util.List;
